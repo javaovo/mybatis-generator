@@ -1,7 +1,7 @@
 # mybatis-generator
-mybatis code generator 生成统一风格的Service和Controller
-generatorConfig.xml配置如下
-
+# mybatis code generator 生成统一风格的Service、ServiceImpl和Controller#
+**generatorConfig.xml配置如下**
+```
 <generatorConfiguration>
 	<properties resource="generator/generatorConfig.properties" />
 	<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
@@ -51,3 +51,4 @@ generatorConfig.xml配置如下
 		</table>
 	</context>
 </generatorConfiguration>
+```
