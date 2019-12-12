@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+       Copyright ${license.git.copyrightYears} the original author or authors.
+
+       Licensed under the Apache License, Version 2.0 (the "License");
+       you may not use this file except in compliance with the License.
+       You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+       Unless required by applicable law or agreed to in writing, software
+       distributed under the License is distributed on an "AS IS" BASIS,
+       WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+       See the License for the specific language governing permissions and
+       limitations under the License.
+
+-->
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<properties resource="generator/generatorConfig.properties" />
+	<context id="Mysql" targetRuntime="MyBatis3Simple"
+		defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+		<property name="autoDelimitKeywords" value="true" />
+		<property name="javaFileEncoding" value="utf-8" />
+
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers" value="tk.mybatis.mapper.common.Mapper" />
+			<!-- <property name="caseSensitive" value="true" /> -->
+		</plugin>
+		
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="${jdbc.driverClassName}"
+			connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<!-- model生成器 -->
+		<javaModelGenerator targetPackage="com.anggle.wxshop.service.entity"
+			targetProject="src/main/java">
+		</javaModelGenerator>
+		
+		<!-- mapper xml生成器 -->
+		<sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+		</sqlMapGenerator>
+		
+		<!-- dao接口生成器 -->
+		<javaClientGenerator targetPackage="com.anggle.wxshop.service.dao"
+			targetProject="src/main/java" type="XMLMAPPER">
+		</javaClientGenerator>
+		<!--生成service,serviceImpl-->
+        <javaServiceGenerator targetPackage="com.anggle.wxshop.service.modules" targetProject="src/main/java"
+        	implementationPackage="com.anggle.wxshop.service.modules">
+        </javaServiceGenerator>
+        <!--生成controller-->
+        <javaControllerGenerator targetPackage="com.anggle.wxshop.rest" targetProject="src/main/java">
+            <property name="superClass" value="com.anggle.wxshop.rest.BaseRestController"></property>
+        </javaControllerGenerator>
+
+		<table tableName="wx_coupon" domainObjectName="WxCoupon">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_goods" domainObjectName="WxGoods">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_goods_categroy" domainObjectName="WxGoodsCategroy">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_goods_price" domainObjectName="WxGoodsPrice">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_member" domainObjectName="WxMember">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_merchant" domainObjectName="WxMerchant">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_mp_info" domainObjectName="WxMpInfo">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_mp_menu" domainObjectName="WxMpMenu">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_mp_resource" domainObjectName="WxMpResource">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_order" domainObjectName="WxOrder">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_cart" domainObjectName="WxCart">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_order_detail" domainObjectName="WxOrderDetail">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_pictures" domainObjectName="WxPictures">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="wx_points" domainObjectName="WxPoints">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
+		<table tableName="sys_user" domainObjectName="SysUser">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_user_role" domainObjectName="SysUserRole">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_menu" domainObjectName="SysMenu">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_role" domainObjectName="SysRole">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_role_menu" domainObjectName="SysRoleMenu">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_group" domainObjectName="SysGroup">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_user_group" domainObjectName="SysUserGroup">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="sys_resource" domainObjectName="SysResource">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+	</context>
+</generatorConfiguration>
