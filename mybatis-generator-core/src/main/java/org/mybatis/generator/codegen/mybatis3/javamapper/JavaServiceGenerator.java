@@ -74,7 +74,7 @@ public class JavaServiceGenerator extends AbstractJavaClientGenerator {
 			}
 		}
 
-		if (!stringHasValue(rootInterface)) {
+		if (stringHasValue(rootInterface)) {
 			FullyQualifiedJavaType entityType = new FullyQualifiedJavaType(introspectedTable.getBaseRecordType());
 			FullyQualifiedJavaType fqjtImport = new FullyQualifiedJavaType(rootInterface);
 			FullyQualifiedJavaType fqjt = new FullyQualifiedJavaType(rootInterface + "<" + entityType.getShortName() + ">");

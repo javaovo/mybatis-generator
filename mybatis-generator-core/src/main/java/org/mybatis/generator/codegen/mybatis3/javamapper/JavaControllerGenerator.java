@@ -92,14 +92,13 @@ public class JavaControllerGenerator extends AbstractJavaGenerator {
 		}
 		commentGenerator.addModelClassComment(topLevelClass, introspectedTable);
 
-		topLevelClass.addImportedType(introspectedTable.getServiceInterfaceType());
-		topLevelClass.addImportedType(introspectedTable.getRules().calculateAllFieldsClass());
+		if (superClass != null) {
+			topLevelClass.addImportedType(introspectedTable.getServiceInterfaceType());
+			topLevelClass.addImportedType(introspectedTable.getRules().calculateAllFieldsClass());
+		}
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Controller"));
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.web.bind.annotation.RequestMapping"));
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired"));
-
-		topLevelClass.addImportedType(FullyQualifiedJavaType.getNewListInstance());
-		topLevelClass.addImportedType(FullyQualifiedJavaType.getNewMapInstance());
 
 		Field fieldService = new Field();
 		topLevelClass.addImportedType(serviceType);
@@ -121,6 +120,7 @@ public class JavaControllerGenerator extends AbstractJavaGenerator {
 		List<CompilationUnit> answer = new ArrayList<CompilationUnit>();
 		if (context.getPlugins().modelBaseRecordClassGenerated(topLevelClass, introspectedTable)) {
 			topLevelClass.getAnnotations().removeIf(s -> s.startsWith("@Table"));// 删除不必要的Annotation
+			topLevelClass.getImportedTypes().removeIf(t -> "javax.persistence.*".contentEquals(t.getFullyQualifiedName()));// 删除不必要的import
 			answer.add(topLevelClass);
 		}
 		return answer;

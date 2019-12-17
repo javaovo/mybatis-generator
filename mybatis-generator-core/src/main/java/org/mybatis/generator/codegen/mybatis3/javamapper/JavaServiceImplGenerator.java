@@ -83,11 +83,11 @@ public class JavaServiceImplGenerator extends AbstractJavaGenerator {
 			topLevelClass.setSuperClass(superClass);
 			topLevelClass.addImportedType(entityType);
 			topLevelClass.addImportedType(superClassImport);
+			topLevelClass.addImportedType(introspectedTable.getRules().calculateAllFieldsClass());// 添加import
 		}
 		commentGenerator.addModelClassComment(topLevelClass, introspectedTable);
 
 		topLevelClass.addImportedType(introspectedTable.getMyBatis3JavaMapperType());
-		topLevelClass.addImportedType(introspectedTable.getRules().calculateAllFieldsClass());// 添加import
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.beans.factory.annotation.Autowired"));
 		topLevelClass.addImportedType(new FullyQualifiedJavaType("org.springframework.stereotype.Service"));
 
@@ -99,7 +99,7 @@ public class JavaServiceImplGenerator extends AbstractJavaGenerator {
 		field.setVisibility(JavaVisibility.PRIVATE);
 		field.addAnnotation("@Autowired");
 		topLevelClass.addField(field);
-
+		
 		if (introspectedTable.isConstructorBased()) {
 			addParameterizedConstructor(topLevelClass);
 
