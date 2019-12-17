@@ -496,10 +496,7 @@ public abstract class BaseRules implements Rules {
    		if (introspectedTable.getContext().getJavaServiceGeneratorConfiguration() == null) {
    			return false;
    		}
-   		if (introspectedTable.getContext().getJavaServiceGeneratorConfiguration().getImplementationPackage() != null) {
-   			return true;
-   		}
-   		return false;
+   		return true;
    	}
     
     /**
