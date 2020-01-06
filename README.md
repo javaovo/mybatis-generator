@@ -1,5 +1,31 @@
 # mybatis-generator
 # 生成统一风格的Service、ServiceImpl和Controller
+**pom.xml配置如下
+```
+<!-- mvn mybatis-generator:generate -Dmybatis.generator.overwrite=true -->
+<plugin>
+	<groupId>org.mybatis.generator</groupId>
+	<artifactId>mybatis-generator-maven-plugin</artifactId>
+	<version>1.3.7</version>
+	<configuration>
+		<configurationFile>${basedir}/src/main/resources/generator/generatorConfig.xml</configurationFile>
+		<overwrite>false</overwrite>
+		<verbose>true</verbose>
+	</configuration>
+	<dependencies>
+		<dependency>
+		    <groupId>org.mybatis.generator</groupId>
+		    <artifactId>mybatis-generator-core</artifactId>
+		    <version>1.3.8</version>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
+		</dependency>
+	</dependencies>
+</plugin>
+
 **generatorConfig.xml配置如下
 ```
 <generatorConfiguration>
