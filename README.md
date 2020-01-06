@@ -1,4 +1,4 @@
-# mybatis-generator
+# mybatis-generator1.3.8
 # 生成统一风格的Service、ServiceImpl和Controller
 ## pom.xml配置如下
 ```xml
