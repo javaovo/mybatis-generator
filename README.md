@@ -1,4 +1,4 @@
-# mybatis-generator1.3.8
+# mybatis-generator1.3.8  需先执行mvn clean deploy -DskipTests将mybatis-generator-core发布到maven私服
 # 生成统一风格的Service、ServiceImpl和Controller
 
 ## pom.xml配置如下
@@ -15,6 +15,11 @@
 	</configuration>
 	<dependencies>
 		<dependency>
+		    <groupId>tk.mybatis</groupId>
+	            <artifactId>mapper-generator</artifactId>
+		    <version>1.1.5</version>
+	        </dependency>
+		<dependency>
 		    <groupId>org.mybatis.generator</groupId>
 		    <artifactId>mybatis-generator-core</artifactId>
 		    <version>1.3.8</version>
@@ -22,7 +27,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.version}</version>
+			<version>8.0.21</version>
 		</dependency>
 	</dependencies>
 </plugin>
@@ -30,6 +35,11 @@
 
 ## generatorConfig.xml配置如下
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE configuration    
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"    
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
 <generatorConfiguration>
 	<properties resource="generator/generatorConfig.properties" />
 	<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
